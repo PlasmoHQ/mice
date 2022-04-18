@@ -1,4 +1,4 @@
-import Peer, { Instance } from "simple-peer"
+import Peer, { Instance, SignalData } from "simple-peer"
 
 import {
   MessageAction,
@@ -29,31 +29,22 @@ window.addEventListener("load", async () => {
 chrome.runtime.onMessage.addListener(
   (message: MessagePayload, sender, sendResponse) => {
     switch (message.action) {
-      case MessageAction.Hailing:
+      case MessageAction.Hailing: {
         if (peer !== null) {
           peer.destroy()
         }
 
         peer = new Peer({ initiator: true })
 
-        peer.on("signal", async (data) => {
-          console.log(data)
+        const outboundHailingSignals: SignalData[] = []
 
-          if (data.type === "offer") {
-            const base64Signal = Buffer.from(JSON.stringify(data)).toString(
-              "base64"
-            )
-
-            await storage.set(StorageKey.OpenHailing, base64Signal)
-
-            sendResponse(true)
-          } else {
-            peer.signal(data)
-          }
+        peer.on("signal", (data) => {
+          outboundHailingSignals.push(data)
         })
 
-        peer.on("data", async (d) => {
-          console.log(d)
+        peer.on("data", async (rawBuffer) => {
+          const data = Buffer.from(rawBuffer).toString("utf8")
+          console.log(data)
         })
 
         peer.on("close", async () => {
@@ -61,19 +52,41 @@ chrome.runtime.onMessage.addListener(
           await storage.set(StorageKey.PeerState, PeerState.Default)
         })
 
-        return true
+        setTimeout(async () => {
+          const base64Signal = Buffer.from(
+            JSON.stringify({ data: outboundHailingSignals })
+          ).toString("base64")
 
-      case MessageAction.Connect:
-        peer?.signal(
-          JSON.parse(Buffer.from(message.data, "base64").toString("utf8"))
+          await storage.set(StorageKey.OpenHailing, base64Signal)
+
+          sendResponse(true)
+        }, 5000)
+
+        return true
+      }
+      case MessageAction.Connect: {
+        if (!peer) {
+          sendResponse(false)
+          return false
+        }
+
+        const inboundConnectSignals: SignalData[] = JSON.parse(
+          Buffer.from(message.data, "base64").toString("utf8")
         )
-        return true
 
-      case MessageAction.Reset:
+        inboundConnectSignals.forEach((data) => peer.signal(data))
+
+        sendResponse(true)
+
+        return true
+      }
+      case MessageAction.Reset: {
         peer.destroy()
         peer = null
-      default:
         return true
+      }
+      default:
+        return false
     }
   }
 )

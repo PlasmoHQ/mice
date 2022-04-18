@@ -1,5 +1,5 @@
 {
-  "include": [".plasmo/**/*.tsx", "./src/**/*.ts", "./src/**/*.tsx"],
+  "include": [".plasmo/**/*.tsx", "./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "paths": {

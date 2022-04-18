@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from "react"
-import Peer, { Instance } from "simple-peer"
+import Peer, { Instance, SignalData } from "simple-peer"
 
-import { StorageKey } from "~core/message"
+import { PeerState, StorageKey } from "~core/message"
 import { useStorage } from "~core/storage"
 
 function OptionsIndex() {
-  const { value: hailingFrequency } = useStorage(StorageKey.InboundHailing)
+  const { value: hailingFrequency, persist } = useStorage(
+    StorageKey.InboundHailing
+  )
+
+  const [peerState, setPeerState] = useState<PeerState>(PeerState.Default)
 
   const [openHandshake, setOpenHandshake] = useState("")
 
@@ -14,28 +18,51 @@ function OptionsIndex() {
   const [ping, setPing] = useState("")
 
   useEffect(() => {
+    const reset = () => {
+      setPeerState(PeerState.Default)
+      setOpenHandshake("")
+      persist("")
+      peerRef.current = null
+    }
+
     const handshake = async () => {
       if (!hailingFrequency) {
         return
       }
+      setPeerState(PeerState.GatherSignal)
 
       const peer = new Peer({ initiator: false })
 
-      peer.on("signal", async (data) => {
-        // peer.signal(data)
-        console.log(data)
-        // queue up all the trickleing for maybe 5 seconds
+      const outboundConnectSignal: SignalData[] = []
 
-        const base64Signal = Buffer.from(JSON.stringify(data)).toString(
-          "base64"
-        )
-
-        setOpenHandshake(base64Signal)
+      peer.on("signal", (data) => {
+        outboundConnectSignal.push(data)
       })
 
-      peer.signal(
-        JSON.parse(Buffer.from(hailingFrequency, "base64").toString("utf8"))
+      peer.on("connect", () => {
+        setPeerState(PeerState.Connected)
+      })
+
+      peer.on("close", reset)
+      peer.on("error", reset)
+
+      const hailing = JSON.parse(
+        Buffer.from(hailingFrequency, "base64").toString("utf8")
       )
+
+      const inboundHailingSignals: SignalData[] = hailing.data
+
+      inboundHailingSignals.forEach((data) => peer.signal(data))
+
+      setTimeout(() => {
+        const base64Signal = Buffer.from(
+          JSON.stringify(outboundConnectSignal)
+        ).toString("base64")
+
+        setOpenHandshake(base64Signal)
+
+        setPeerState(PeerState.Hailing)
+      }, 5000)
 
       peerRef.current = peer
     }
@@ -45,8 +72,12 @@ function OptionsIndex() {
 
   return (
     <div>
+      <h2>- {peerState} -</h2>
       <p>Hailing Frequency:</p>
-      <input readOnly value={hailingFrequency} />
+      <input
+        value={hailingFrequency}
+        onChange={(e) => persist(e.target.value)}
+      />
       <p>---</p>
       <p>Share this Handshake Code:</p>
       <input readOnly value={openHandshake} />

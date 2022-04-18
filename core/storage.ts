@@ -85,9 +85,9 @@ export const useStorage = (key: string, onInit?: (v: string) => void) => {
     value,
     // Set the render value
     set,
-    // Save the current rendering value into chrome storage
-    save: () => storageRef.current.set(key, value),
-    // Store the value into chrome storage, thet set its render state
+    // Save the value OR current rendering value into chrome storage
+    save: (v?: string) => storageRef.current.set(key, v || value),
+    // Store the value into chrome storage, then set its render state
     persist: (newValue: string) =>
       storageRef.current.set(key, newValue).then(() => set(newValue))
   }
