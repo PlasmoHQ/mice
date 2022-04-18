@@ -20,7 +20,12 @@ function OptionsIndex() {
       }
 
       const peer = new Peer({ initiator: false })
+
       peer.on("signal", async (data) => {
+        // peer.signal(data)
+        console.log(data)
+        // queue up all the trickleing for maybe 5 seconds
+
         const base64Signal = Buffer.from(JSON.stringify(data)).toString(
           "base64"
         )
@@ -42,10 +47,10 @@ function OptionsIndex() {
     <div>
       <p>Hailing Frequency:</p>
       <input readOnly value={hailingFrequency} />
-      ---
+      <p>---</p>
       <p>Share this Handshake Code:</p>
       <input readOnly value={openHandshake} />
-      ---
+      <p>---</p>
       <input
         value={ping}
         onChange={(e) => {

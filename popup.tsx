@@ -22,6 +22,7 @@ const usePeer = () => {
   })
 
   const init = async () => {
+    await peerState.persist(PeerState.GatherSignal)
     const [tab] = await getActiveTabs()
 
     chrome.tabs.sendMessage<MessagePayload>(
@@ -65,8 +66,8 @@ const usePeer = () => {
 }
 
 function PeerHailing() {
-  const [hailingFrequency, setHailingFrequency] = useState("")
-  const [handshakeCode, setHandshakeCode] = useState("")
+  const [inboundHf, setInboundHf] = useState("")
+  const [outboundHandshake, setOutboundHandshake] = useState("")
   const peer = usePeer()
 
   switch (peer.state) {
@@ -76,6 +77,14 @@ function PeerHailing() {
           <p>Connected</p>
         </>
       )
+
+    case PeerState.GatherSignal:
+      return (
+        <>
+          <p>Gathering signal, please wait...</p>
+        </>
+      )
+
     case PeerState.Hailing:
       return (
         <>
@@ -88,12 +97,12 @@ function PeerHailing() {
           </p>
           <input
             placeholder="Enter Handshake Code here"
-            value={handshakeCode}
-            onChange={(e) => setHandshakeCode(e.target.value)}
+            value={outboundHandshake}
+            onChange={(e) => setOutboundHandshake(e.target.value)}
           />
           <button
-            disabled={!handshakeCode}
-            onClick={() => peer.connect(handshakeCode)}>
+            disabled={!outboundHandshake}
+            onClick={() => peer.connect(outboundHandshake)}>
             Connect
           </button>
         </>
@@ -112,12 +121,12 @@ function PeerHailing() {
           -- OR --
           <input
             placeholder="Enter Hailing Frequency here"
-            value={hailingFrequency}
-            onChange={(e) => setHailingFrequency(e.target.value)}
+            value={inboundHf}
+            onChange={(e) => setInboundHf(e.target.value)}
           />
           <button
-            disabled={!hailingFrequency}
-            onClick={() => peer.handshake(hailingFrequency)}>
+            disabled={!inboundHf}
+            onClick={() => peer.handshake(inboundHf)}>
             Get Handshake Code
           </button>
         </>

@@ -1,12 +1,14 @@
 export enum PeerState {
   Default = "default",
+  GatherSignal = "gather-signal",
   Hailing = "hailing",
   Connected = "connected"
 }
 
 export enum MessageAction {
   Hailing = "hailing",
-  Connect = "connect"
+  Connect = "connect",
+  Reset = "reset"
 }
 
 export enum StorageKey {
