@@ -27,10 +27,10 @@
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "@types/simple-peer": "9.11.4",
-    "buffer": "^6.0.3",
-    "events": "^3.3.0",
+    "buffer": "6.0.3",
+    "events": "3.3.0",
     "prettier": "2.6.2",
-    "process": "^0.11.10",
+    "process": "0.11.10",
     "typescript": "4.6.3"
   }
 }
