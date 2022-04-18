@@ -1,0 +1,36 @@
+{
+  "name": "mice",
+  "version": "0.0.0",
+  "description": "A WebRTC based mouse sharing browser extension",
+  "packageManager": "pnpm@6.32.8",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "plasmo start",
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "test": "plasmo test"
+  },
+  "dependencies": {
+    "mnemonic-id": "3.2.7",
+    "plasmo": "0.0.0",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "simple-peer": "9.11.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "3.2.0",
+    "@types/chrome": "0.0.181",
+    "@types/node": "17.0.24",
+    "@types/react": "18.0.5",
+    "@types/react-dom": "18.0.1",
+    "@types/simple-peer": "9.11.4",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "prettier": "2.6.2",
+    "process": "^0.11.10",
+    "typescript": "4.6.3"
+  }
+}
