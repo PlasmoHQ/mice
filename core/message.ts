@@ -1,3 +1,7 @@
+export const MagicNumber = {
+  MinCodeSize: 18
+}
+
 export enum PeerState {
   Default = "default",
   GatherSignal = "gather-signal",
@@ -21,3 +25,13 @@ export type MessagePayload = {
   action: MessageAction
   data?: string
 }
+
+export type CursorData =
+  | {
+      action: "move"
+      x: number
+      y: number
+    }
+  | {
+      action: "click" | "down" | "up"
+    }

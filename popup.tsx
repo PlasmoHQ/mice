@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import {
+  MagicNumber,
   MessageAction,
   MessagePayload,
   PeerState,
@@ -9,7 +10,7 @@ import {
 import { Storage, useStorage } from "~core/storage"
 import { getActiveTabs } from "~core/tabs"
 
-const usePeer = () => {
+const useHailingPeer = () => {
   const { value: hailingFrequency } = useStorage(StorageKey.OpenHailing)
   const peerState = useStorage(StorageKey.PeerState, async () => {
     const storage = new Storage()
@@ -25,13 +26,13 @@ const usePeer = () => {
     await peerState.persist(PeerState.GatherSignal)
     const [tab] = await getActiveTabs()
 
-    chrome.tabs.sendMessage<MessagePayload>(
+    chrome.tabs.sendMessage<MessagePayload, boolean>(
       tab.id,
       {
         action: MessageAction.Hailing
       },
-      () => {
-        peerState.persist(PeerState.Hailing)
+      (ok) => {
+        peerState.persist(ok ? PeerState.Hailing : PeerState.Default)
       }
     )
   }
@@ -52,6 +53,9 @@ const usePeer = () => {
       },
       () => {
         peerState.persist(PeerState.Connected)
+        setTimeout(() => {
+          window.close()
+        }, 3000)
       }
     )
   }
@@ -68,46 +72,45 @@ const usePeer = () => {
 function PeerHailing() {
   const [inboundHf, setInboundHf] = useState("")
   const [outboundHandshake, setOutboundHandshake] = useState("")
-  const peer = usePeer()
+  const peer = useHailingPeer()
+
+  useEffect(() => {
+    if (inboundHf.length > MagicNumber.MinCodeSize) {
+      peer.handshake(inboundHf)
+    }
+  }, [inboundHf])
+
+  useEffect(() => {
+    if (outboundHandshake.length > MagicNumber.MinCodeSize) {
+      peer.connect(outboundHandshake)
+    }
+  }, [outboundHandshake])
 
   switch (peer.state) {
     case PeerState.Connected:
-      return (
-        <>
-          <p>Connected</p>
-        </>
-      )
+      return <i>Connected</i>
 
     case PeerState.GatherSignal:
-      return (
-        <>
-          <p>Gathering signal, please wait...</p>
-        </>
-      )
+      return <i>Gathering signal, please wait...</i>
 
     case PeerState.Hailing:
       return (
         <>
-          <p>
-            Share the <b>Hailing Frequency</b> below:
-          </p>
+          <label>
+            Share the <b>Hailing Frequency</b>:
+          </label>
           <input value={peer.hailingFrequency} readOnly />
-          <p>
-            Then, paste the <b>Handshake Code</b> and connect:
-          </p>
+          <br />
+          <label>
+            Then, paste the <b>Handshake Code</b>:
+          </label>
           <input
-            placeholder="Enter Handshake Code here"
+            placeholder="Enter Handshake Code"
             value={outboundHandshake}
             onChange={(e) => setOutboundHandshake(e.target.value)}
           />
-          <button
-            disabled={!outboundHandshake}
-            onClick={() => peer.connect(outboundHandshake)}>
-            Connect
-          </button>
         </>
       )
-
     case PeerState.Default:
     default:
       return (
@@ -120,15 +123,10 @@ function PeerHailing() {
           </button>
           -- OR --
           <input
-            placeholder="Enter Hailing Frequency here"
+            placeholder="Enter Hailing Frequency"
             value={inboundHf}
             onChange={(e) => setInboundHf(e.target.value)}
           />
-          <button
-            disabled={!inboundHf}
-            onClick={() => peer.handshake(inboundHf)}>
-            Get Handshake Code
-          </button>
         </>
       )
   }
@@ -139,7 +137,8 @@ function IndexPopup() {
     <div
       style={{
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        padding: 16
       }}>
       <PeerHailing />
     </div>
