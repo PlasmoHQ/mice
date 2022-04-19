@@ -1,5 +1,5 @@
 {
-  "include": [".plasmo/**/*.tsx", "./**/*.ts", "./**/*.tsx"],
+  "include": [".plasmo/**/*", "./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "paths": {
@@ -7,11 +7,12 @@
     },
     "baseUrl": ".",
 
+    "strict": false,
+    "skipLibCheck": true,
+
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
