@@ -5,6 +5,16 @@
   "description": "Open a hailing frequency via WebRTC for input sharing",
   "packageManager": "pnpm@6.32.8",
   "author": "L",
+  "manifest": {
+    "permissions": [
+      "activeTab",
+      "storage",
+      "tabs"
+    ],
+    "host_permissions": [
+      "https://*/*"
+    ]
+  },
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
