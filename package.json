@@ -21,7 +21,9 @@
     "dev": "plasmo dev",
     "build": "plasmo build",
     "test": "plasmo test",
-    "docs": "parcel build index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmo-corp.github.io/mice/"
+    "web": "run-s web:*",
+    "web:clean": "rimraf docs",
+    "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmo-corp.github.io/mice/"
   },
   "dependencies": {
     "mnemonic-id": "3.2.7",
@@ -37,11 +39,13 @@
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "@types/simple-peer": "9.11.4",
+    "@plasmo-corp/rps": "1.2.1",
     "parcel": "2.4.1",
     "buffer": "6.0.3",
     "events": "3.3.0",
     "prettier": "2.6.2",
     "process": "0.11.10",
+    "rimraf": "3.0.2",
     "typescript": "4.6.3"
   }
 }
