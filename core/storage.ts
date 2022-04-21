@@ -74,6 +74,10 @@ export const useStorage = (key: string, onInit?: (v: string) => void) => {
       onInit?.(v)
     })
 
+    if (!chrome?.storage) {
+      return
+    }
+
     chrome.storage.onChanged.addListener((objs) => {
       if (objs[key] && objs[key].newValue !== value) {
         set(objs[key].newValue)
