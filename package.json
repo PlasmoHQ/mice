@@ -1,17 +1,27 @@
 {
   "name": "mice",
+  "displayName": "Mice",
   "version": "0.0.0",
-  "description": "A WebRTC based mouse sharing browser extension",
+  "description": "Open a hailing frequency via WebRTC for input sharing",
   "packageManager": "pnpm@6.32.8",
+  "author": "L",
   "engines": {
     "npm": ">=7.0.0",
     "node": ">=16.0.0"
+  },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
+    }
   },
   "scripts": {
     "start": "plasmo start",
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "test": "plasmo test"
+    "test": "plasmo test",
+    "docs": "parcel build index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmo-corp.github.io/mice/"
   },
   "dependencies": {
     "mnemonic-id": "3.2.7",
@@ -27,6 +37,7 @@
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
     "@types/simple-peer": "9.11.4",
+    "parcel": "2.4.1",
     "buffer": "6.0.3",
     "events": "3.3.0",
     "prettier": "2.6.2",
