@@ -55,12 +55,12 @@ const createMouse = () => {
   return mouseEl
 }
 
-window.addEventListener("load", async () => {
-  if (!peer || peer.destroyed) {
-    peer = null
-    await reset()
-  }
-})
+// window.addEventListener("load", async () => {
+//   if (!peer || peer.destroyed) {
+//     peer = null
+//     await reset()
+//   }
+// })
 
 chrome.runtime.onMessage.addListener(
   (message: MessagePayload, sender, sendResponse) => {
@@ -153,6 +153,7 @@ chrome.runtime.onMessage.addListener(
       case MessageAction.Reset: {
         peer.destroy()
         peer = null
+        sendResponse(true)
         return true
       }
       default:

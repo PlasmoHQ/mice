@@ -60,12 +60,26 @@ const useHailingPeer = () => {
     )
   }
 
+  const disconnect = async () => {
+    const [tab] = await getActiveTabs()
+    chrome.tabs.sendMessage<MessagePayload>(
+      tab.id,
+      {
+        action: MessageAction.Reset
+      },
+      () => {
+        peerState.persist(PeerState.Default)
+      }
+    )
+  }
+
   return {
     state: peerState.value,
     init,
     hailingFrequency,
     handshake,
-    connect
+    connect,
+    disconnect
   }
 }
 
@@ -88,7 +102,12 @@ function PeerHailing() {
 
   switch (peer.state) {
     case PeerState.Connected:
-      return <i>Connected</i>
+      return (
+        <div>
+          <i>Connected</i>
+          <button onClick={() => peer.disconnect()}>Disconnect</button>
+        </div>
+      )
 
     case PeerState.GatherSignal:
       return <i>Gathering signal, please wait...</i>
@@ -109,6 +128,7 @@ function PeerHailing() {
             value={outboundHandshake}
             onChange={(e) => setOutboundHandshake(e.target.value)}
           />
+          <button onClick={() => peer.disconnect()}>Cancel</button>
         </>
       )
     case PeerState.Default:

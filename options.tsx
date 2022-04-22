@@ -54,9 +54,9 @@ const useHandshakePeer = () => {
         setPeerState(PeerState.Connected)
       })
 
-      peer.on("end", destroy)
-      peer.on("close", destroy)
-      peer.on("error", destroy)
+      peer.on("end", alert)
+      peer.on("close", alert)
+      peer.on("error", alert)
 
       const hailing = JSON.parse(
         Buffer.from(hailingFrequency, "base64").toString("utf8")
