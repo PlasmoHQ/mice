@@ -50,7 +50,7 @@
     "@types/react-dom": "18.0.1",
     "@types/simple-peer": "9.11.4",
     "@plasmo-corp/rps": "1.2.1",
-    "parcel": "2.4.1",
+    "parcel": "2.5.0",
     "buffer": "6.0.3",
     "events": "3.3.0",
     "prettier": "2.6.2",
