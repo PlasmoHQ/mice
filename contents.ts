@@ -99,13 +99,25 @@ chrome.runtime.onMessage.addListener(
               vMouse.style.background = "transparent"
               break
             case "click":
-              const topEl = document.elementFromPoint(
+              const topEls = document.elementsFromPoint(
                 vMouse.offsetLeft,
                 vMouse.offsetTop
               )
 
-              if (topEl instanceof HTMLElement) {
-                topEl.click()
+              console.log(topEls)
+
+              const videoEl = topEls.find(
+                (el) => el instanceof HTMLVideoElement
+              )
+
+              if (!!videoEl && videoEl instanceof HTMLVideoElement) {
+                videoEl.click()
+                return
+              }
+
+              const htmlEl = topEls.find((el) => el instanceof HTMLElement)
+              if (htmlEl instanceof HTMLElement) {
+                htmlEl.click()
               }
 
               break

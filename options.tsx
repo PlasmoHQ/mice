@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Peer, { Instance, SignalData } from "simple-peer"
 
 import { CursorData, MagicNumber, PeerState, StorageKey } from "~core/message"
@@ -55,7 +55,7 @@ const useHandshakePeer = () => {
       })
 
       peer.on("end", alert)
-      peer.on("close", alert)
+      peer.on("close", destroy)
       peer.on("error", alert)
 
       const hailing = JSON.parse(
@@ -101,7 +101,7 @@ const useHandshakePeer = () => {
     peerRef.current.send(JSON.stringify(data))
   }
 
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+  const moveCursor = ({ pageX = 0, pageY = 0 }) => {
     if (!peerRef.current) {
       return
     }
@@ -111,9 +111,9 @@ const useHandshakePeer = () => {
     }
 
     const x =
-      (e.pageX - mousePadRectRef.current.left) / mousePadRectRef.current.width //x position within the element.
+      (pageX - mousePadRectRef.current.left) / mousePadRectRef.current.width //x position within the element.
     const y =
-      (e.pageY - mousePadRectRef.current.top) / mousePadRectRef.current.height //y position within the element.
+      (pageY - mousePadRectRef.current.top) / mousePadRectRef.current.height //y position within the element.
 
     sendCursor({
       action: "move",
@@ -127,7 +127,7 @@ const useHandshakePeer = () => {
     setHailingFrequency: persist,
     hailingFrequency,
     openHandshake,
-    handleMouseMove,
+    moveCursor,
     sendCursor,
     mousePadRef
   }
@@ -185,7 +185,10 @@ function OptionsIndex() {
             onClick={() => peer.sendCursor({ action: "click" })}
             onMouseDown={() => peer.sendCursor({ action: "down" })}
             onMouseUp={() => peer.sendCursor({ action: "up" })}
-            onMouseMove={peer.handleMouseMove}
+            onMouseMove={(e) => peer.moveCursor(e)}
+            onTouchStart={() => peer.sendCursor({ action: "down" })}
+            onTouchEnd={() => peer.sendCursor({ action: "up" })}
+            onTouchMove={(e) => peer.moveCursor(e.touches[0])}
           />
         </div>
       )}
