@@ -23,7 +23,7 @@ specifiers:
 
 dependencies:
   mnemonic-id: 3.2.7
-  plasmo: 0.11.0
+  plasmo: 0.13.0
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
   simple-peer: 9.11.1
@@ -94,7 +94,7 @@ packages:
       '@babel/traverse': 7.17.9
       '@babel/types': 7.17.0
       convert-source-map: 1.8.0
-      debug: 4.3.4
+      debug: 4.3.3
       gensync: 1.0.0-beta.2
       json5: 2.2.1
       semver: 6.3.0
@@ -135,7 +135,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.13.10
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       semver: 6.3.0
     dev: true
 
@@ -148,7 +148,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.16.12
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       semver: 6.3.0
     dev: false
 
@@ -780,7 +780,7 @@ packages:
       '@parcel/workers': 2.5.0_@parcel+core@2.5.0
       abortcontroller-polyfill: 1.7.3
       base-x: 3.0.9
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       clone: 2.1.2
       dotenv: 7.0.0
       dotenv-expand: 5.1.0
@@ -952,7 +952,7 @@ packages:
       '@parcel/plugin': 2.5.0_@parcel+core@2.5.0
       '@parcel/source-map': 2.0.2
       '@parcel/utils': 2.5.0
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - '@parcel/core'
@@ -1197,7 +1197,7 @@ packages:
       '@parcel/plugin': 2.5.0_@parcel+core@2.5.0
       '@parcel/source-map': 2.0.2
       '@parcel/utils': 2.5.0
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       json5: 2.2.1
       nullthrows: 1.1.1
       semver: 5.7.1
@@ -1213,7 +1213,7 @@ packages:
       '@parcel/plugin': 2.5.0_@parcel+core@2.5.0
       '@parcel/source-map': 2.0.2
       '@parcel/utils': 2.5.0
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       nullthrows: 1.1.1
     transitivePeerDependencies:
       - '@parcel/core'
@@ -1257,7 +1257,7 @@ packages:
       '@parcel/utils': 2.5.0
       '@parcel/workers': 2.5.0_@parcel+core@2.5.0
       '@swc/helpers': 0.3.8
-      browserslist: 4.20.2
+      browserslist: 4.20.3
       detect-libc: 1.0.3
       nullthrows: 1.1.1
       regenerator-runtime: 0.13.9
@@ -1649,7 +1649,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -1750,8 +1750,8 @@ packages:
       fill-range: 7.0.1
     dev: false
 
-  /browserslist/4.20.2:
-    resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
+  /browserslist/4.20.3:
+    resolution: {integrity: sha512-NBhymBQl1zM0Y5dQT/O+xiLP9/rzOIQdKM/eMJBAq7yBgaB6krIYLGejrwVYnSHZdqjscB1SPuAjHwxjvN6Wdg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
@@ -2232,7 +2232,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.3
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -2370,7 +2370,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.4
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -2397,7 +2397,7 @@ packages:
       decompress-response: 6.0.0
       form-data-encoder: 1.7.1
       get-stream: 6.0.1
-      http2-wrapper: 2.1.10
+      http2-wrapper: 2.1.11
       lowercase-keys: 3.0.0
       p-cancelable: 3.0.0
       responselike: 2.0.0
@@ -2500,8 +2500,8 @@ packages:
     resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
     dev: false
 
-  /http2-wrapper/2.1.10:
-    resolution: {integrity: sha512-QHgsdYkieKp+6JbXP25P+tepqiHYd+FVnDwXpxi/BlUcoIB0nsmTOymTNvETuTO+pDuwcSklPE72VR3DqV+Haw==}
+  /http2-wrapper/2.1.11:
+    resolution: {integrity: sha512-aNAk5JzLturWEUiuhAN73Jcbq96R7rTitAoXV54FYMatvihnpD2+6PUgU4ce3D/m5VDbw+F5CsyKSF176ptitQ==}
     engines: {node: '>=10.19.0'}
     dependencies:
       quick-lru: 5.1.1
@@ -2513,7 +2513,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2891,6 +2891,12 @@ packages:
 
   /minimatch/3.0.4:
     resolution: {integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==}
+    dependencies:
+      brace-expansion: 1.1.11
+    dev: false
+
+  /minimatch/3.1.2:
+    resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
       brace-expansion: 1.1.11
 
@@ -3414,8 +3420,8 @@ packages:
       pngjs: 4.0.1
     dev: false
 
-  /plasmo/0.11.0:
-    resolution: {integrity: sha512-rLdFbWd+kWnieEkwWeawLhxd4jzMFwsFXo3B4ae5goyxt9y2/uYn5NFEJ5IIYpydsl2BzsbULyVPFqyQ23A5OA==}
+  /plasmo/0.13.0:
+    resolution: {integrity: sha512-pNS6oOznGicSD6EKPp74IUTNXxYZYFoFZ9i20lDjn+71st+qMqOTxUXQYWPK/Ig9BgHR3Q0xMCkFIeh+5HkORA==}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.6.0
@@ -3597,7 +3603,7 @@ packages:
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
-      safe-buffer: 5.1.2
+      safe-buffer: 5.2.1
     dev: false
 
   /rc/1.2.8:
@@ -3860,7 +3866,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.3
       socks: 2.6.2
     transitivePeerDependencies:
       - supports-color
@@ -4178,7 +4184,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 4.2.3
+      string-width: 1.0.2
     dev: false
 
   /wrappy/1.0.2:
