@@ -5,7 +5,7 @@ specifiers:
   '@trivago/prettier-plugin-sort-imports': 3.2.0
   '@types/chrome': 0.0.181
   '@types/node': 17.0.25
-  '@types/react': 18.0.6
+  '@types/react': 18.0.8
   '@types/react-dom': 18.0.2
   '@types/simple-peer': 9.11.4
   buffer: 6.0.3
@@ -23,7 +23,7 @@ specifiers:
 
 dependencies:
   mnemonic-id: 3.2.7
-  plasmo: 0.11.0
+  plasmo: 0.13.0
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
   simple-peer: 9.11.1
@@ -33,7 +33,7 @@ devDependencies:
   '@trivago/prettier-plugin-sort-imports': 3.2.0_prettier@2.6.2
   '@types/chrome': 0.0.181
   '@types/node': 17.0.25
-  '@types/react': 18.0.6
+  '@types/react': 18.0.8
   '@types/react-dom': 18.0.2
   '@types/simple-peer': 9.11.4
   buffer: 6.0.3
@@ -1584,11 +1584,11 @@ packages:
   /@types/react-dom/18.0.2:
     resolution: {integrity: sha512-UxeS+Wtj5bvLRREz9tIgsK4ntCuLDo0EcAcACgw3E+9wE8ePDr9uQpq53MfcyxyIS55xJ+0B6mDS8c4qkkHLBg==}
     dependencies:
-      '@types/react': 18.0.6
+      '@types/react': 18.0.8
     dev: true
 
-  /@types/react/18.0.6:
-    resolution: {integrity: sha512-bPqwzJRzKtfI0mVYr5R+1o9BOE8UEXefwc1LwcBtfnaAn6OoqMhLa/91VA8aeWfDPJt1kHvYKI8RHcQybZLHHA==}
+  /@types/react/18.0.8:
+    resolution: {integrity: sha512-+j2hk9BzCOrrOSJASi5XiOyBbERk9jG5O73Ya4M0env5Ixi6vUNli4qy994AINcEF+1IEHISYFfIT4zwr++LKw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -3414,8 +3414,8 @@ packages:
       pngjs: 4.0.1
     dev: false
 
-  /plasmo/0.11.0:
-    resolution: {integrity: sha512-rLdFbWd+kWnieEkwWeawLhxd4jzMFwsFXo3B4ae5goyxt9y2/uYn5NFEJ5IIYpydsl2BzsbULyVPFqyQ23A5OA==}
+  /plasmo/0.13.0:
+    resolution: {integrity: sha512-pNS6oOznGicSD6EKPp74IUTNXxYZYFoFZ9i20lDjn+71st+qMqOTxUXQYWPK/Ig9BgHR3Q0xMCkFIeh+5HkORA==}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.6.0
@@ -3597,7 +3597,7 @@ packages:
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
-      safe-buffer: 5.1.2
+      safe-buffer: 5.2.1
     dev: false
 
   /rc/1.2.8:
