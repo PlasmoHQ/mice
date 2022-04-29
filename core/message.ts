@@ -17,6 +17,7 @@ export enum MessageAction {
 
 export enum StorageKey {
   PeerState = "peer-state",
+  IframeClick = "iframe-click",
   OpenHailing = "open-hailing",
   InboundHailing = "inbound-hailing"
 }
@@ -28,7 +29,7 @@ export type MessagePayload = {
 
 export type CursorData =
   | {
-      action: "move" | "iframe-click"
+      action: "move"
       x: number
       y: number
     }

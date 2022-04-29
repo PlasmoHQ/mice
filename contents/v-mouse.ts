@@ -13,15 +13,12 @@ let peer: Instance = null
 
 let vMouse: HTMLDivElement = null
 
-let iframePort: chrome.runtime.Port = null
-
 const storage = new Storage()
 
 async function reset() {
   if (!!vMouse) {
     vMouse.remove()
     vMouse = null
-    iframePort = null
   }
   await Promise.all([
     storage.set(StorageKey.OpenHailing, ""),
@@ -35,8 +32,6 @@ async function reset() {
 // console.log(vid)
 
 const createMouse = () => {
-  iframePort = chrome.runtime.connect({ name: "iframe" })
-
   const mouseContainerEl = document.createElement("div")
   mouseContainerEl.style.position = "fixed"
   mouseContainerEl.style.top = "0px"
@@ -111,15 +106,11 @@ chrome.runtime.onMessage.addListener(
                 vMouse.offsetTop
               )
 
-              console.log(topEls)
+              if (topEls[0] instanceof HTMLIFrameElement) {
+                const iframeEl = topEls[0]
 
-              const iframeEl = topEls.find(
-                (el) => el instanceof HTMLIFrameElement
-              )
-
-              if (iframeEl instanceof HTMLIFrameElement) {
-                iframePort.postMessage({
-                  action: "iframe-click",
+                await storage.set(StorageKey.IframeClick, {
+                  href: iframeEl.src,
                   x: vMouse.offsetLeft - iframeEl.offsetLeft,
                   y: vMouse.offsetTop - iframeEl.offsetTop
                 })
