@@ -28,7 +28,7 @@ export type MessagePayload = {
 
 export type CursorData =
   | {
-      action: "move"
+      action: "move" | "iframe-click"
       x: number
       y: number
     }

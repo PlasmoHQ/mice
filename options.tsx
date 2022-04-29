@@ -182,13 +182,16 @@ function OptionsIndex() {
               borderRadius: "8px",
               background: "gray"
             }}
-            onClick={() => peer.sendCursor({ action: "click" })}
+            onClick={(e) => {
+              peer.moveCursor(e)
+              peer.sendCursor({ action: "click" })
+            }}
+            onMouseMove={(e) => peer.moveCursor(e)}
             onMouseDown={() => peer.sendCursor({ action: "down" })}
             onMouseUp={() => peer.sendCursor({ action: "up" })}
-            onMouseMove={(e) => peer.moveCursor(e)}
+            onTouchMove={(e) => peer.moveCursor(e.touches[0])}
             onTouchStart={() => peer.sendCursor({ action: "down" })}
             onTouchEnd={() => peer.sendCursor({ action: "up" })}
-            onTouchMove={(e) => peer.moveCursor(e.touches[0])}
           />
         </div>
       )}
