@@ -12,7 +12,7 @@ specifiers:
   events: 3.3.0
   mnemonic-id: 3.2.7
   parcel: 2.5.0
-  plasmo: ^0.16.0
+  plasmo: 0.18.0
   prettier: 2.6.2
   process: 0.11.10
   react: 18.1.0
@@ -23,7 +23,7 @@ specifiers:
 
 dependencies:
   mnemonic-id: 3.2.7
-  plasmo: 0.16.0
+  plasmo: 0.18.0
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   simple-peer: 9.11.1
@@ -94,7 +94,7 @@ packages:
       '@babel/traverse': 7.17.9
       '@babel/types': 7.17.0
       convert-source-map: 1.8.0
-      debug: 4.3.3
+      debug: 4.3.4
       gensync: 1.0.0-beta.2
       json5: 2.2.1
       semver: 6.3.0
@@ -1667,7 +1667,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2259,7 +2259,7 @@ packages:
     engines: {node: '>= 10.17.0'}
     hasBin: true
     dependencies:
-      debug: 4.3.3
+      debug: 4.3.4
       get-stream: 5.2.0
       yauzl: 2.10.0
     optionalDependencies:
@@ -2544,7 +2544,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.3
+      debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -3453,8 +3453,8 @@ packages:
       pngjs: 4.0.1
     dev: false
 
-  /plasmo/0.16.0:
-    resolution: {integrity: sha512-U5M/jWv6WUyz8LbZc9j+u1t5hgFGP4coXs9qI69oRHspCxDYYFkAUNDUuXQJiP0dfMtXKOAcfvNeApTiqZwR8A==}
+  /plasmo/0.18.0:
+    resolution: {integrity: sha512-C8XnZwzjuOcyimP2o4+N7S4ZRx9yMyOpMeeWS8osHvmwG4i+L/7rzzeNUEFqc1E5ovc7Nq9RhTR8SRDFgAjuJQ==}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.6.0
@@ -3905,7 +3905,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.3
+      debug: 4.3.4
       socks: 2.6.2
     transitivePeerDependencies:
       - supports-color
@@ -4253,7 +4253,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: false
 
   /wrap-ansi/7.0.0:
