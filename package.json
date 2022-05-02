@@ -1,7 +1,7 @@
 {
   "name": "mice",
   "displayName": "Mice",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Open a hailing frequency via WebRTC for input sharing",
   "packageManager": "pnpm@6.32.8",
   "author": "L",
