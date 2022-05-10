@@ -1,3 +1,4 @@
+import { Storage, useStorage } from "@p1asm0/storage"
 import { useEffect, useState } from "react"
 
 import {
@@ -7,7 +8,6 @@ import {
   PeerState,
   StorageKey
 } from "~core/message"
-import { Storage, useStorage } from "~core/storage"
 import { getActiveTabs } from "~core/tabs"
 
 const useHailingPeer = () => {

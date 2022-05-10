@@ -1,3 +1,4 @@
+import { Storage } from "@p1asm0/storage"
 import Peer, { Instance, SignalData } from "simple-peer"
 
 import {
@@ -7,7 +8,6 @@ import {
   PeerState,
   StorageKey
 } from "~core/message"
-import { Storage } from "~core/storage"
 
 let peer: Instance = null
 

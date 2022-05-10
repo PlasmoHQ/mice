@@ -1,8 +1,8 @@
+import { useStorage } from "@p1asm0/storage"
 import { useEffect, useRef, useState } from "react"
 import Peer, { Instance, SignalData } from "simple-peer"
 
 import { CursorData, MagicNumber, PeerState, StorageKey } from "~core/message"
-import { useStorage } from "~core/storage"
 
 const useHandshakePeer = () => {
   const {
