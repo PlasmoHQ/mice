@@ -38,7 +38,7 @@
   "dependencies": {
     "@p1asm0/storage": "workspace:*",
     "mnemonic-id": "3.2.7",
-    "plasmo": "^0.20.0",
+    "plasmo": "0.20.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "simple-peer": "9.11.1"
