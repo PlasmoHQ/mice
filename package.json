@@ -3,7 +3,6 @@
   "displayName": "Mice",
   "version": "0.0.3",
   "description": "Open a hailing frequency via WebRTC for input sharing",
-  "packageManager": "pnpm@7.0.0",
   "author": "L",
   "manifest": {
     "permissions": [
@@ -33,12 +32,12 @@
     "test": "plasmo test",
     "web": "run-s web:*",
     "web:clean": "rimraf docs",
-    "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmo-corp.github.io/mice/"
+    "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmohq.github.io/mice/"
   },
   "dependencies": {
     "@plasmohq/storage": "workspace:*",
     "mnemonic-id": "3.2.7",
-    "plasmo": "^0.20.0",
+    "plasmo": "^0.21.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "simple-peer": "9.11.1"
@@ -47,7 +46,7 @@
     "@plasmo-corp/rps": "workspace:*",
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
     "@types/chrome": "0.0.184",
-    "@types/node": "17.0.31",
+    "@types/node": "17.0.32",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.3",
     "@types/simple-peer": "9.11.4",
