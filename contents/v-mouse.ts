@@ -1,4 +1,4 @@
-import { Storage } from "@p1asm0/storage"
+import { Storage } from "@plasmohq/storage"
 import Peer, { Instance, SignalData } from "simple-peer"
 
 import {
