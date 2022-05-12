@@ -1,7 +1,7 @@
 {
   "name": "mice",
   "displayName": "Mice",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Open a hailing frequency via WebRTC for input sharing",
   "author": "L",
   "manifest": {
@@ -26,10 +26,8 @@
     }
   },
   "scripts": {
-    "start": "plasmo start",
     "dev": "plasmo dev",
     "build": "plasmo build",
-    "test": "plasmo test",
     "web": "run-s web:*",
     "web:clean": "rimraf docs",
     "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmohq.github.io/mice/"
@@ -37,7 +35,7 @@
   "dependencies": {
     "@plasmohq/storage": "workspace:*",
     "mnemonic-id": "3.2.7",
-    "plasmo": "^0.21.0",
+    "plasmo": "^0.21.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "simple-peer": "9.11.1"
