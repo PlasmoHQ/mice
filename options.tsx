@@ -5,11 +5,8 @@ import Peer, { Instance, SignalData } from "simple-peer"
 import { CursorData, MagicNumber, PeerState, StorageKey } from "~core/message"
 
 const useHandshakePeer = () => {
-  const {
-    value: hailingFrequency,
-    persist,
-    save
-  } = useStorage(StorageKey.InboundHailing)
+  const [hailingFrequency, setHailingFrequency, hailingFrequencyExtra] =
+    useStorage(StorageKey.InboundHailing)
 
   const [peerState, setPeerState] = useState<PeerState>(PeerState.Default)
 
@@ -28,7 +25,7 @@ const useHandshakePeer = () => {
     }
 
     const destroy = () => {
-      persist("")
+      setHailingFrequency("")
       reset()
     }
 
@@ -90,7 +87,7 @@ const useHandshakePeer = () => {
     handshake()
 
     return () => {
-      save("")
+      hailingFrequencyExtra.setStoreValue("")
     }
   }, [hailingFrequency])
 
@@ -124,7 +121,7 @@ const useHandshakePeer = () => {
 
   return {
     state: peerState,
-    setHailingFrequency: persist,
+    setHailingFrequency: setHailingFrequency,
     hailingFrequency,
     openHandshake,
     moveCursor,

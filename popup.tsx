@@ -11,19 +11,14 @@ import {
 import { getActiveTabs } from "~core/tabs"
 
 const useHailingPeer = () => {
-  const { value: hailingFrequency } = useStorage(StorageKey.OpenHailing)
-  const peerState = useStorage(StorageKey.PeerState, async () => {
-    const storage = new Storage()
-
-    const openHf = await storage.get(StorageKey.OpenHailing)
-
-    if (!openHf) {
-      await peerState.persist(PeerState.Default)
-    }
-  })
+  const [hailingFrequency] = useStorage(StorageKey.OpenHailing)
+  const [peerState, setPeerState] = useStorage(
+    StorageKey.PeerState,
+    PeerState.Default
+  )
 
   const init = async () => {
-    await peerState.persist(PeerState.GatherSignal)
+    await setPeerState(PeerState.GatherSignal)
     const [tab] = await getActiveTabs()
 
     chrome.tabs.sendMessage<MessagePayload, boolean>(
@@ -32,7 +27,7 @@ const useHailingPeer = () => {
         action: MessageAction.Hailing
       },
       (ok) => {
-        peerState.persist(ok ? PeerState.Hailing : PeerState.Default)
+        setPeerState(ok ? PeerState.Hailing : PeerState.Default)
       }
     )
   }
@@ -52,7 +47,7 @@ const useHailingPeer = () => {
         data: handshakeCode
       },
       () => {
-        peerState.persist(PeerState.Connected)
+        setPeerState(PeerState.Connected)
         setTimeout(() => {
           window.close()
         }, 3000)
@@ -68,13 +63,13 @@ const useHailingPeer = () => {
         action: MessageAction.Reset
       },
       () => {
-        peerState.persist(PeerState.Default)
+        setPeerState(PeerState.Default)
       }
     )
   }
 
   return {
-    state: peerState.value,
+    state: peerState,
     init,
     hailingFrequency,
     handshake,
