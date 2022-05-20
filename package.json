@@ -33,7 +33,7 @@
     "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmohq.github.io/mice/"
   },
   "dependencies": {
-    "@plasmohq/storage": "0.2.3",
+    "@plasmohq/storage": "0.3.0",
     "mnemonic-id": "3.2.7",
     "plasmo": "^0.29.0",
     "react": "18.1.0",
