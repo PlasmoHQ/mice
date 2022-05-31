@@ -35,7 +35,7 @@
   "dependencies": {
     "@plasmohq/storage": "0.3.0",
     "mnemonic-id": "3.2.7",
-    "plasmo": "^0.34.1",
+    "plasmo": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "simple-peer": "9.11.1"
