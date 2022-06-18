@@ -33,9 +33,9 @@
     "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmohq.github.io/mice/"
   },
   "dependencies": {
-    "@plasmohq/storage": "0.6.0",
+    "@plasmohq/storage": "workspace:*",
     "mnemonic-id": "3.2.7",
-    "plasmo": "latest",
+    "plasmo": "workspace:*",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "simple-peer": "9.11.1"
