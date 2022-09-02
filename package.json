@@ -1,8 +1,8 @@
 {
   "name": "mice",
   "displayName": "Mice",
-  "version": "0.0.4",
-  "description": "Open a hailing frequency via WebRTC for input sharing",
+  "version": "0.1.1",
+  "description": "Open a hailing frequency via WebRTC for input sharing, mainly for remote video controlling.",
   "author": "L",
   "manifest": {
     "permissions": [
