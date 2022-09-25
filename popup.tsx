@@ -1,4 +1,5 @@
-import { Storage, useStorage } from "@plasmohq/storage"
+import { Storage } from "@plasmohq/storage"
+import { useStorage } from "@plasmohq/storage/hook"
 import { useEffect, useState } from "react"
 
 import {

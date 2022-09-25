@@ -1,4 +1,4 @@
-import { useStorage } from "@plasmohq/storage"
+import { useStorage } from "@plasmohq/storage/hook"
 import { useEffect, useRef, useState } from "react"
 import Peer, { Instance, SignalData } from "simple-peer"
 
