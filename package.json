@@ -33,27 +33,27 @@
     "web:build": "parcel build .plasmo/static/options/index.html --dist-dir docs --no-source-maps --cache-dir .plasmo/cache/parcel-web --public-url https://plasmohq.github.io/mice/"
   },
   "dependencies": {
-    "@plasmohq/storage": "0.12.2",
+    "@plasmohq/storage": "0.13.0",
     "mnemonic-id": "3.2.7",
-    "plasmo": "0.58.0",
+    "plasmo": "0.59.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "simple-peer": "9.11.1"
   },
   "devDependencies": {
-    "@plasmohq/prettier-plugin-sort-imports": "3.5.4",
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.0",
     "@plasmohq/storage": "0.12.2",
-    "@types/chrome": "0.0.200",
-    "@types/node": "18.11.7",
-    "@types/react": "18.0.24",
-    "@types/react-dom": "18.0.8",
+    "@types/chrome": "0.0.202",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
     "@types/simple-peer": "9.11.5",
     "buffer": "6.0.3",
     "events": "3.3.0",
-    "parcel": "2.7.0",
+    "parcel": "2.8.0",
     "prettier": "2.7.1",
     "process": "0.11.10",
     "rimraf": "3.0.2",
-    "typescript": "4.8.4"
+    "typescript": "4.9.3"
   }
 }
